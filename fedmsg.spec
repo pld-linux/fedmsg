@@ -16,6 +16,7 @@ URL:		http://github.com/ralphbean/fedmsg
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.219
 %if %{with tests}
 BuildRequires:	python-mock
 BuildRequires:	python-nose
@@ -165,6 +166,8 @@ rm -rf $RPM_BUILD_ROOT
 	--root $RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/fedmsg/tests
+
+%py_postclean
 
 install -d $RPM_BUILD_ROOT{/etc/{logrotate.d,rc.d/init.d},%{_sysconfdir}/fedmsg.d,%{systemdtmpfilesdir},%{systemdunitdir},/var/{run,log}/fedmsg}
 cp -p fedmsg.d/*.py $RPM_BUILD_ROOT%{_sysconfdir}/fedmsg.d
