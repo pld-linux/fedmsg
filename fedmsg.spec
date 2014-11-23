@@ -12,6 +12,7 @@ Source0:	http://pypi.python.org/packages/source/f/fedmsg/%{name}-%{version}.tar.
 # Source0-md5:	3074d89b779929b338ac609081e10340
 Source1:	%{name}-tmpfiles.conf
 Patch0:		%{name}-kojitests.patch
+Patch1:		config.patch
 URL:		http://github.com/ralphbean/fedmsg
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
@@ -115,6 +116,7 @@ firewall.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 # This only got shipped with fedmsg-0.6.3
 rm -f fedmsg.d/_tweet-real.py

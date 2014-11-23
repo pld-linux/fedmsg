@@ -1,0 +1,16 @@
+--- fedmsg-0.11.1/fedmsg.d//endpoints.py~	2014-10-21 18:34:55.000000000 +0300
++++ fedmsg-0.11.1/fedmsg.d//endpoints.py	2014-11-23 03:23:59.491285537 +0200
+@@ -24,10 +24,10 @@
+     endpoints={
+         # These are here so your local box can listen to the upstream
+         # infrastructure's bus.  Cool, right?  :)
+-        "fedora-infrastructure": [
+-            "tcp://hub.fedoraproject.org:9940",
++        #"fedora-infrastructure": [
++            #"tcp://hub.fedoraproject.org:9940",
+             #"tcp://stg.fedoraproject.org:9940",
+-        ],
++        #],
+         #"debian-infrastructure": [
+         #    "tcp://fedmsg.olasd.eu:9940",
+         #],
