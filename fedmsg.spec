@@ -14,9 +14,8 @@ Source1:	%{name}-tmpfiles.conf
 Patch0:		%{name}-kojitests.patch
 URL:		http://github.com/ralphbean/fedmsg
 BuildRequires:	python-devel
-BuildRequires:	python-iterutils
 BuildRequires:	python-setuptools
-BuildRequires:	systemd-devel
+BuildRequires:	rpm-pythonprov
 %if %{with tests}
 BuildRequires:	python-mock
 BuildRequires:	python-nose
