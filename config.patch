@@ -1,5 +1,5 @@
---- fedmsg-0.11.1/fedmsg.d//endpoints.py~	2014-10-21 18:34:55.000000000 +0300
-+++ fedmsg-0.11.1/fedmsg.d//endpoints.py	2014-11-23 03:23:59.491285537 +0200
+--- fedmsg-0.11.1/fedmsg.d/endpoints.py~	2014-10-21 18:34:55.000000000 +0300
++++ fedmsg-0.11.1/fedmsg.d/endpoints.py	2014-11-23 03:23:59.491285537 +0200
 @@ -24,10 +24,10 @@
      endpoints={
          # These are here so your local box can listen to the upstream
@@ -14,3 +14,15 @@
          #"debian-infrastructure": [
          #    "tcp://fedmsg.olasd.eu:9940",
          #],
+--- fedmsg-0.11.1/fedmsg.d/base.py~	2014-10-21 18:34:55.000000000 +0300
++++ fedmsg-0.11.1/fedmsg.d/base.py	2014-12-01 21:01:11.065992062 +0200
+@@ -20,6 +20,9 @@
+ import os
+ 
+ config = dict(
++    # Prefix for the topic of each message sent.
++    topic_prefix="org.pld-linux",
++
+     # Set this to dev if you're hacking on fedmsg or an app.
+     # Set to stg or prod if running in the Fedora Infrastructure
+     environment="dev",
