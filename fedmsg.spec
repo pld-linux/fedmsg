@@ -9,14 +9,13 @@
 
 Summary:	Tools for Fedora Infrastructure real-time messaging
 Name:		fedmsg
-Version:	0.11.1
+Version:	0.16.2
 Release:	1
 License:	LGPL v2+
 Group:		Applications/Networking
 Source0:	http://pypi.python.org/packages/source/f/fedmsg/%{name}-%{version}.tar.gz
-# Source0-md5:	3074d89b779929b338ac609081e10340
+# Source0-md5:	43fc8257724252b38b34608b0c9a2218
 Source1:	%{name}-tmpfiles.conf
-Patch0:		%{name}-kojitests.patch
 Patch1:		config.patch
 URL:		https://github.com/fedora-infra/fedmsg
 BuildRequires:	python-devel
@@ -120,7 +119,6 @@ firewall.
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 
 # This only got shipped with fedmsg-0.6.3
