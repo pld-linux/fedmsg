@@ -133,6 +133,7 @@ rm -f fedmsg/tests/test_crypto_gpg.py
 # so knock it out too.
 sed -i "/'sqlalchemy.*$/d" setup.py
 
+sed -i "/cryptography/d" setup.py
 sed -i "/daemon/d" setup.py
 
 # Temporarily disable signature validation while the timestamp precision bug is
