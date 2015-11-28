@@ -144,7 +144,7 @@ sed -i "s/validate_signatures=True/validate_signatures=False/g" fedmsg.d/ssl.py
 cp -rf fedmsg.d fedmsg/tests/
 
 %build
-%{__python} setup.py build
+%py_build
 
 # Create this temporary symlink that's only needed for the test suite.
 ln -s fedmsg/tests/test_certs dev_certs
@@ -167,9 +167,7 @@ PYTHONPATH=$(pwd) python setup.py test
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python} setup.py install \
-	--skip-build \
-	--optimize=2 \
+%py_install \
     --install-data=%{_datadir} \
 	--root $RPM_BUILD_ROOT
 
