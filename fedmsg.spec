@@ -21,7 +21,7 @@ URL:		https://github.com/fedora-infra/fedmsg
 BuildRequires:	python-devel
 BuildRequires:	python-setuptools
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.219
+BuildRequires:	rpmbuild(macros) >= 1.710
 %if %{with tests}
 BuildRequires:	python-mock
 BuildRequires:	python-nose
