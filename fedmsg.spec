@@ -1,5 +1,4 @@
 # TODO
-# - pldize initscripts
 # - add initscript post scriptlets
 # - --daemonize crashes (works under systemd only): https://github.com/fedora-infra/fedmsg/issues/302
 
@@ -15,10 +14,10 @@ Group:		Applications/Networking
 Source0:	http://pypi.python.org/packages/source/f/fedmsg/%{name}-%{version}.tar.gz
 # Source0-md5:	43f00d123669f6a0506ee0f37035c5d7
 Source1:	%{name}-tmpfiles.conf
-Source2:	fedmsg-gateway.init
-Source3:	fedmsg-hub.init
-Source4:	fedmsg-irc.init
-Source5:	fedmsg-relay.init
+Source2:	%{name}-gateway.init
+Source3:	%{name}-hub.init
+Source4:	%{name}-irc.init
+Source5:	%{name}-relay.init
 Patch1:		config.patch
 URL:		https://github.com/fedora-infra/fedmsg
 BuildRequires:	python-devel
@@ -85,6 +84,8 @@ output suitable for consumption by a collectd plugin.
 %package hub
 Summary:	The FedMsg Hub
 Group:		Applications/Networking
+Requires:	rc-scripts >= 0.4.0.20
+Requires(post,preun):	/sbin/chkconfig
 Requires:	%{name} = %{version}-%{release}
 
 %description hub
@@ -95,6 +96,8 @@ hub.
 Summary:	The FedMsg Relay
 Group:		Applications/Networking
 Requires:	%{name} = %{version}-%{release}
+Requires:	rc-scripts >= 0.4.0.20
+Requires(post,preun):	/sbin/chkconfig
 
 %description relay
 This package contains configuration and init scripts for the FedMsg
@@ -104,6 +107,8 @@ relay.
 Summary:	The FedMsg IRC Bot
 Group:		Applications/Networking
 Requires:	%{name} = %{version}-%{release}
+Requires:	rc-scripts >= 0.4.0.20
+Requires(post,preun):	/sbin/chkconfig
 
 %description irc
 This package contains configuration and init scripts for the FedMsg
@@ -113,6 +118,8 @@ IRC bot.
 Summary:	The FedMsg Gateway daemon
 Group:		Applications/Networking
 Requires:	%{name} = %{version}-%{release}
+Requires:	rc-scripts >= 0.4.0.20
+Requires(post,preun):	/sbin/chkconfig
 
 %description gateway
 This package contains configuration and init scripts for the FedMsg
@@ -204,26 +211,42 @@ rm -rf $RPM_BUILD_ROOT
 %groupadd -g 313 -r fedmsg
 %useradd -u 313  -r -s /sbin/nologin -d %{_datadir}/%{name} -M -c 'FedMsg' -g fedmsg fedmsg
 
+%post hub
+/sbin/chkconfig --add fedmsg-hub
+%service fedmsg-hub restart
+
 %preun hub
-if [ $1 -eq 0 ]; then
+if [ "$1" = "0" ]; then
 	%service fedmsg-hub stop
 	/sbin/chkconfig --del fedmsg-hub
 fi
 
+%post relay
+/sbin/chkconfig --add fedmsg-relay
+%service fedmsg-relay restart
+
 %preun relay
-if [ $1 -eq 0 ]; then
+if [ "$1" = "0" ]; then
 	%service fedmsg-relay stop
 	/sbin/chkconfig --del fedmsg-relay
 fi
 
+%post irc
+/sbin/chkconfig --add fedmsg-irc
+%service fedmsg-irc restart
+
 %preun irc
-if [ $1 -eq 0 ]; then
+if [ "$1" = "0" ]; then
 	%service fedmsg-irc stop
 	/sbin/chkconfig --del fedmsg-irc
 fi
 
+%post gateway
+/sbin/chkconfig --add fedmsg-gateway
+%service fedmsg-gateway restart
+
 %preun gateway
-if [ $1 -eq 0 ]; then
+if [ "$1" = "0" ]; then
 	%service fedmsg-gateway stop
 	/sbin/chkconfig --del fedmsg-gateway
 fi
