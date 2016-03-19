@@ -1,5 +1,4 @@
 # TODO
-# - add initscript post scriptlets
 # - --daemonize crashes (works under systemd only): https://github.com/fedora-infra/fedmsg/issues/302
 
 # Conditional build:
@@ -7,12 +6,12 @@
 
 Summary:	Tools for Fedora Infrastructure real-time messaging
 Name:		fedmsg
-Version:	0.16.4
-Release:	2
+Version:	0.17.0
+Release:	1
 License:	LGPL v2+
 Group:		Applications/Networking
 Source0:	http://pypi.python.org/packages/source/f/fedmsg/%{name}-%{version}.tar.gz
-# Source0-md5:	43f00d123669f6a0506ee0f37035c5d7
+# Source0-md5:	a56ffea38fd83d1f1c2592363e6f764b
 Source1:	%{name}-tmpfiles.conf
 Source2:	%{name}-gateway.init
 Source3:	%{name}-hub.init
