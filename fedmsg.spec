@@ -258,6 +258,7 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/endpoints.py*
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/logging.py*
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/ssl.py*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/relay.py*
 %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/fedmsg
 %attr(755,root,root) %{_bindir}/fedmsg-logger
 %attr(755,root,root) %{_bindir}/fedmsg-tail
@@ -297,7 +298,6 @@ fi
 %attr(755,root,root) %{_bindir}/fedmsg-relay
 %attr(754,root,root) /etc/rc.d/init.d/fedmsg-relay
 %{systemdunitdir}/fedmsg-relay.service
-%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/relay.py*
 
 %files irc
 %defattr(644,root,root,755)
