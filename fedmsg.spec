@@ -39,7 +39,7 @@ BuildRequires:	python-pygments
 BuildRequires:	python-requests
 #BuidlRequires:  python-sqlalchemy
 %endif
-Requires:	python-M2Crypto
+Requires:	python-M2Crypto >= 0.22.5
 Requires:	python-arrow
 #Requires:	python-daemon
 #Requires:	python-fabulous
