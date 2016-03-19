@@ -15,6 +15,10 @@ Group:		Applications/Networking
 Source0:	http://pypi.python.org/packages/source/f/fedmsg/%{name}-%{version}.tar.gz
 # Source0-md5:	43f00d123669f6a0506ee0f37035c5d7
 Source1:	%{name}-tmpfiles.conf
+Source2:	fedmsg-gateway.init
+Source3:	fedmsg-hub.init
+Source4:	fedmsg-irc.init
+Source5:	fedmsg-relay.init
 Patch1:		config.patch
 URL:		https://github.com/fedora-infra/fedmsg
 BuildRequires:	python-devel
@@ -177,10 +181,10 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{/etc/{logrotate.d,rc.d/init.d},%{_sysconfdir}/fedmsg.d,%{systemdtmpfilesdir},%{systemdunitdir},/var/{run,log}/fedmsg}
 cp -p fedmsg.d/*.py $RPM_BUILD_ROOT%{_sysconfdir}/fedmsg.d
 
-cp -p initsys/sysv/fedmsg-hub.init $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-hub
-cp -p initsys/sysv/fedmsg-relay.init $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-relay
-cp -p initsys/sysv/fedmsg-irc.init $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-irc
-cp -p initsys/sysv/fedmsg-gateway.init $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-gateway
+install -p %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-gateway
+install -p %{SOURCE3} $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-hub
+install -p %{SOURCE4} $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-irc
+install -p %{SOURCE5} $RPM_BUILD_ROOT/etc/rc.d/init.d/fedmsg-relay
 
 cp -p initsys/systemd/fedmsg-hub.service $RPM_BUILD_ROOT%{systemdunitdir}
 cp -p initsys/systemd/fedmsg-relay.service $RPM_BUILD_ROOT%{systemdunitdir}
