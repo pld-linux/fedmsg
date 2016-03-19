@@ -1,4 +1,3 @@
-#
 # TODO
 # - pldize initscripts
 # - add initscript post scriptlets
@@ -9,12 +8,12 @@
 
 Summary:	Tools for Fedora Infrastructure real-time messaging
 Name:		fedmsg
-Version:	0.16.2
+Version:	0.16.4
 Release:	1
 License:	LGPL v2+
 Group:		Applications/Networking
 Source0:	http://pypi.python.org/packages/source/f/fedmsg/%{name}-%{version}.tar.gz
-# Source0-md5:	43fc8257724252b38b34608b0c9a2218
+# Source0-md5:	43f00d123669f6a0506ee0f37035c5d7
 Source1:	%{name}-tmpfiles.conf
 Patch1:		config.patch
 URL:		https://github.com/fedora-infra/fedmsg
