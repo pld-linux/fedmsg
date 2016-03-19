@@ -297,7 +297,7 @@ fi
 %attr(755,root,root) %{_bindir}/fedmsg-relay
 %attr(754,root,root) /etc/rc.d/init.d/fedmsg-relay
 %{systemdunitdir}/fedmsg-relay.service
-%config(noreplace) %{_sysconfdir}/fedmsg.d/relay.py*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/relay.py*
 
 %files irc
 %defattr(644,root,root,755)
@@ -305,11 +305,11 @@ fi
 %attr(754,root,root) /etc/rc.d/init.d/fedmsg-irc
 %{systemdunitdir}/fedmsg-irc.service
 
-%config(noreplace) %{_sysconfdir}/fedmsg.d/ircbot.py*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/ircbot.py*
 
 %files gateway
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/fedmsg-gateway
 %attr(754,root,root) /etc/rc.d/init.d/fedmsg-gateway
 %{systemdunitdir}/fedmsg-gateway.service
-%config(noreplace) %{_sysconfdir}/fedmsg.d/gateway.py*
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/gateway.py*
