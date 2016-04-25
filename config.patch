@@ -33,3 +33,14 @@
      # Set this to dev if you're hacking on fedmsg or an app.
      # Set to stg or prod if running in the Fedora Infrastructure
      environment="dev",
+--- fedmsg-0.17.0/fedmsg.d/ircbot.py~	2015-06-24 20:33:04.000000000 +0300
++++ fedmsg-0.17.0/fedmsg.d/ircbot.py	2016-04-26 00:26:38.910365239 +0300
+@@ -27,7 +27,7 @@
+             timeout=120,
+             make_pretty=True,
+             make_terse=True,
+-            make_short=True,
++            make_short=False,
+             line_rate=0.9,
+             # Don't show the heartbeat... gross.
+             filters=dict(
