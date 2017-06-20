@@ -4,14 +4,17 @@
 # Conditional build:
 %bcond_with	tests		# build with tests
 
+%define		module		fedmsg
+%define		egg_name	fedmsg
+%define		pypi_name	fedmsg
 Summary:	Tools for Fedora Infrastructure real-time messaging
 Name:		fedmsg
-Version:	0.17.2
+Version:	0.18.3
 Release:	1
 License:	LGPL v2+
 Group:		Applications/Networking
-Source0:	http://pypi.python.org/packages/source/f/fedmsg/%{name}-%{version}.tar.gz
-# Source0-md5:	c648950030cc801d22c3951c4046894e
+Source0:	https://files.pythonhosted.org/packages/source/f/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+# Source0-md5:	638b1a889e7ecfdd05ddf5ef0b53731b
 Source1:	%{name}-tmpfiles.conf
 Source2:	%{name}-gateway.init
 Source3:	%{name}-hub.init
@@ -180,7 +183,7 @@ rm -rf $RPM_BUILD_ROOT
     --install-data=%{_datadir} \
 	--root $RPM_BUILD_ROOT
 
-%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/fedmsg/tests
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/%{module}/tests
 
 %py_postclean
 
@@ -268,15 +271,15 @@ fi
 %attr(755,fedmsg,fedmsg) %dir /var/log/fedmsg
 %attr(775,fedmsg,fedmsg) %dir /var/run/fedmsg
 %dir %{py_sitescriptdir}/fedmsg
-%{py_sitescriptdir}/fedmsg/*.py[co]
-%{py_sitescriptdir}/fedmsg/commands
-%{py_sitescriptdir}/fedmsg/consumers
-%{py_sitescriptdir}/fedmsg/crypto
-%{py_sitescriptdir}/fedmsg/encoding
-%{py_sitescriptdir}/fedmsg/meta
-%{py_sitescriptdir}/fedmsg/replay
-%{py_sitescriptdir}/fedmsg/text
-%{py_sitescriptdir}/fedmsg-%{version}-py*.egg-info
+%{py_sitescriptdir}/%{module}/*.py[co]
+%{py_sitescriptdir}/%{module}/commands
+%{py_sitescriptdir}/%{module}/consumers
+%{py_sitescriptdir}/%{module}/crypto
+%{py_sitescriptdir}/%{module}/encoding
+%{py_sitescriptdir}/%{module}/meta
+%{py_sitescriptdir}/%{module}/replay
+%{py_sitescriptdir}/%{module}/text
+%{py_sitescriptdir}/%{egg_name}-%{version}-py*.egg-info
 %{systemdtmpfilesdir}/%{name}.conf
 
 %files announce
