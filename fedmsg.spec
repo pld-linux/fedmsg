@@ -9,12 +9,12 @@
 %define		pypi_name	fedmsg
 Summary:	Tools for Fedora Infrastructure real-time messaging
 Name:		fedmsg
-Version:	0.18.3
+Version:	1.1.1
 Release:	1
 License:	LGPL v2+
 Group:		Applications/Networking
 Source0:	https://files.pythonhosted.org/packages/source/f/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	638b1a889e7ecfdd05ddf5ef0b53731b
+# Source0-md5:	95d88c12d430b44a57d805b00a3b65b7
 Source1:	%{name}-tmpfiles.conf
 Source2:	%{name}-gateway.init
 Source3:	%{name}-hub.init
@@ -263,6 +263,7 @@ fi
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/ssl.py*
 %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/fedmsg.d/relay.py*
 %config(noreplace) %verify(not md5 mtime size) /etc/logrotate.d/fedmsg
+%attr(755,root,root) %{_bindir}/fedmsg-check
 %attr(755,root,root) %{_bindir}/fedmsg-logger
 %attr(755,root,root) %{_bindir}/fedmsg-tail
 %attr(755,root,root) %{_bindir}/fedmsg-trigger
@@ -299,6 +300,7 @@ fi
 %files relay
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/fedmsg-relay
+%attr(755,root,root) %{_bindir}/fedmsg-signing-relay
 %attr(754,root,root) /etc/rc.d/init.d/fedmsg-relay
 %{systemdunitdir}/fedmsg-relay.service
 
