@@ -7,7 +7,7 @@
 Summary:	Tools for Fedora Infrastructure real-time messaging
 Name:		fedmsg
 Version:	1.1.1
-Release:	2
+Release:	3
 License:	LGPL v2+
 Group:		Applications/Networking
 Source0:	https://files.pythonhosted.org/packages/source/f/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
