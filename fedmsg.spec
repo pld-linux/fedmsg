@@ -128,7 +128,7 @@ firewall.
 
 %prep
 %setup -q
-%patch1 -p1
+%patch -P1 -p1
 
 # This only got shipped with fedmsg-0.6.3
 rm -f fedmsg.d/_tweet-real.py
